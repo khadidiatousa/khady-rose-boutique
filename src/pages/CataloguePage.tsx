@@ -1,0 +1,33 @@
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../components/ui/card';
+import { Button } from '../components/ui/button';
+
+const allProducts = [
+  { name: 'Sac à main de luxe', image: 'https://storage.googleapis.com/dala-prod-public-storage/generated-images/fea9fa2d-da6b-44d5-b417-f002e466f385/product1-38ur2ex-1764162288983.webp', price: '120 €' },
+  { name: 'Ensemble Bébé Douceur', image: 'https://storage.googleapis.com/dala-prod-public-storage/generated-images/fea9fa2d-da6b-44d5-b417-f002e466f385/product2-c6r2mnw-1764162297198.webp', price: '75 €' },
+  { name: 'Robe d\'été Bohème', image: 'https://storage.googleapis.com/dala-prod-public-storage/generated-images/fea9fa2d-da6b-44d5-b417-f002e466f385/product3-a1hn74f-1764162303704.webp', price: '150 €' },
+  // Add more products as needed
+];
+
+export default function CataloguePage() {
+  return (
+    <div className="container mx-auto px-4 py-12">
+      <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">Notre Catalogue</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {allProducts.map((product) => (
+          <Card key={product.name} className="overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <CardHeader className="p-0">
+              <img src={product.image} alt={product.name} className="w-full h-64 object-cover" />
+            </CardHeader>
+            <CardContent className="p-6">
+              <CardTitle className="text-xl font-semibold text-gray-800">{product.name}</CardTitle>
+            </CardContent>
+            <CardFooter className="flex justify-between items-center p-6 bg-gray-50">
+              <span className="text-lg font-bold text-gray-800">{product.price}</span>
+              <Button variant="outline">Ajouter au panier</Button>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
